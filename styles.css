@@ -44,11 +44,13 @@ body {
 #hTotalValue {
     font-size: 1.3em;
     float: right;
+    font-weight: 500;
 }
 
 #jTotalValue {
     font-size: 1.3em;
     float: right;
+    font-weight: 500;
 }
 
 .portfolio-container {
@@ -58,8 +60,13 @@ body {
     margin-bottom: 30px;
 }
 
+.portfolio-data {
+    font-size: 0.7em;
+}
+
 h2 {
-    font-size: 2em;
+    font-size: 1.6em;
+    font-weight: 300;
 }
 
 h3 {
