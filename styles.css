@@ -1,0 +1,82 @@
+/* #2D0C2C
+#BF9943;
+#D8CECD;
+#423336; */
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #D8CECD;
+    font-family: 'Poppins', sans-serif;
+}
+
+#header {
+    padding: 10px;
+    background-color: #D8CECD;
+    margin-top: 15px;
+}
+
+#main {
+    border-top: 1px solid grey;
+    padding: 10px;
+    background-color: #D8CECD;
+}
+
+#footer {
+    border-top: 1px solid grey;
+    padding: 10px;
+    background-color: #D8CECD;
+}
+
+#refresh {
+    background-color: #2D0C2C;
+    color: white;
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#hTotalValue {
+    font-size: 1.3em;
+    float: right;
+}
+
+#jTotalValue {
+    font-size: 1.3em;
+    float: right;
+}
+
+.portfolio-container {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.9em;
+}
+
+h4 {
+    font-size: 1em;
+}
+
+form {
+    justify-content: center;
+}
+
+#search {
+    background-color: #2D0C2C;
+    color: white;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
