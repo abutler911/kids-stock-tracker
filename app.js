@@ -1,6 +1,8 @@
 let stats;
 let newMarketValue;
 let stockPrice;
+const inputStockSymbol = document.querySelector('#inputStockSymbol');
+const searchBtn = document.querySelector('#searchBtn');
 
 const stockOneName = document.querySelector('#stockOneName');
 const stockOneShares = document.querySelector('#stockOneShares');
@@ -17,6 +19,13 @@ const stockTwoMarketPrice = document.querySelector('#stockTwoMarketPrice');
 const stockTwoGainLoss = document.querySelector('#stockTwoGainLoss');
 
 const hTotalValue = document.querySelector('#hTotalValue');
+console.log(searchBtn);
+
+searchBtn.addEventListener('click', () => {
+    preventDefault();
+
+    console.log(inputStockSymbol.innerText);
+});
 
 const requestStockData = async (stockSymbol) => {
     const response = await fetch(`https://yahoofinance-stocks1.p.rapidapi.com/stock-metadata?Symbol=${stockSymbol}`, {
@@ -60,13 +69,10 @@ let hudsonStocks = [
         symbol: "GPRO",
         shares: 1,
         price: 6.39,
-        // marketValue: requestStockData(this.symbol).then(() => {
-        //     console.log(stats.result.regularMarketPrice);
-        // }),
         totalPaid: function(shares, price) {
             return this.shares * this.price;
         },
-        gainLoss: 1
+        gainLoss: 0
     }
 ]
 
@@ -74,12 +80,22 @@ requestStockData(hudsonStocks[0].symbol).then(x => {
     stockPrice = ((parseFloat(x).toFixed(2)) * hudsonStocks[0].shares).toFixed(2);
     stockOneMarketPrice.innerText = stockPrice;
     stockOneGainLoss.innerText = (stockPrice - hudsonStocks[0].totalPaid()).toFixed(2);
+    if(parseFloat(stockOneGainLoss.innerText) < 0) {
+        stockOneGainLoss.classList.add('red');
+    } else {
+        stockOneGainLoss.classList.add('green');
+    }
 });
 
 requestStockData(hudsonStocks[1].symbol).then(x => {
     stockPrice = ((parseFloat(x).toFixed(2)) * hudsonStocks[1].shares).toFixed(2);
     stockTwoMarketPrice.innerText = stockPrice;
     stockTwoGainLoss.innerText = (stockPrice - hudsonStocks[1].totalPaid()).toFixed(2);
+    if(parseFloat(stockTwoGainLoss.innerText) < 0) {
+        stockTwoGainLoss.classList.add('red');
+    } else {
+        stockTwoGainLoss.classList.add('green');
+    }
 });
 
 
@@ -93,6 +109,7 @@ stockTwoName.innerText = hudsonStocks[1].name;
 stockTwoShares.innerText = hudsonStocks[1].shares;
 stockTwoAveragePrice.innerText = hudsonStocks[1].price;
 stockTwoTotalInvestment.innerText = hudsonStocks[1].totalPaid();
+
 
 
 
