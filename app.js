@@ -39,8 +39,16 @@ const requestStockData = async (stockSymbol) => {
 
 const data = await response.json()
 stats = data;
+console.log(stats);
+stockName = stats.result.shortName;
+console.log(stockName);
+
 stockPrice = stats.result.regularMarketPrice;
-return stockPrice;
+
+return {
+    name: stockName,
+    price: stockPrice
+};
 
 
 };
@@ -111,17 +119,19 @@ stockTwoTotalInvestment.innerText = hudsonStocks[1].totalPaid();
 searchBtn.addEventListener('click', (e) => {
     e.preventDefault();
     let inputStockSymbol = document.querySelector('#inputStockSymbol').value.toUpperCase();
-    if(inputStockSymbol.length > 4 || inputStockSymbol.length < 3) {
-        alert('Invalid Symbol - Stock Symbol Must Be 3 or 4 Characters');
+    if(inputStockSymbol.length > 4 || inputStockSymbol.length < 1) {
+        alert('Invalid Symbol - Stock Symbol Must Be 1 to 4 Characters');
     } else {
-        const stockSymbolDisplay = document.querySelector('#stock-symbol-display');
-        const para = document.createElement("p");
+        requestStockData(inputStockSymbol).then(x => {
 
-        para.innerText = `Your Symbol To Search Is: ${inputStockSymbol}`;
-        stockSymbolDisplay.appendChild(para);
-        console.log(inputStockSymbol);
+            const stockSymbolDisplay = document.querySelector('#stock-symbol-display');
+            const para = document.createElement("p");
+            para.innerText = `Quote for ${inputStockSymbol} is $${stockPrice}`;
+            stockSymbolDisplay.appendChild(para);
+        });
+
+        
     }
-    inputStockSymbol.innerText = " ";
 });
 
 
