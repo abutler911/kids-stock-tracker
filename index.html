@@ -25,7 +25,7 @@
     <div class="container-md">
       <div class="row">
         <div class="col text-center">
-          <h1 class="display-1">Hudson & Jack's Stock Tracker</h1>
+          <h1 class="display-1">Da Boys'<br> Stock Tracker</h1>
         </div>
       </div>
       <div class="row">
@@ -170,24 +170,21 @@
           </div>
       </section>
       <section id="footer">
-      <div class="row">
-        <h2 class="text-center">Stock Price Search</h2>
-        <form class="row g-3">
-          <div class="col-auto">
-            <label for="inputStockSymbol" class="visually-hidden"
-              >stock symbol</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              id="inputStockSymbol"
-              placeholder="stock symbol"
-            />
+        <div class="container">
+        <div class="row">
+          <h2 class="text-center">Stock Price Search</h2>
+        </div>
+        <div class="row" id="search-row">
+          <div class="col-4">
+            <input type="text" placeholder="stock symbol" id="inputStockSymbol">
           </div>
-          <div class="col-auto">
-            <button class="btn mb-3" id="searchBtn">Search</button>
-          </div>
-        </form>
+        <div class="col-4">
+          <button class="btn mb-3" id="searchBtn">Search</button>
+        </div>
+      </div>
+      <div id="stock-symbol-display">
+
+      </div>
       </div>
     </section>
 

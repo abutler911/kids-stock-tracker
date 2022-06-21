@@ -1,7 +1,7 @@
 let stats;
 let newMarketValue;
 let stockPrice;
-const inputStockSymbol = document.querySelector('#inputStockSymbol');
+
 const searchBtn = document.querySelector('#searchBtn');
 
 const stockOneName = document.querySelector('#stockOneName');
@@ -21,11 +21,7 @@ const stockTwoGainLoss = document.querySelector('#stockTwoGainLoss');
 const hTotalValue = document.querySelector('#hTotalValue');
 console.log(searchBtn);
 
-searchBtn.addEventListener('click', () => {
-    preventDefault();
 
-    console.log(inputStockSymbol.innerText);
-});
 
 const requestStockData = async (stockSymbol) => {
     const response = await fetch(`https://yahoofinance-stocks1.p.rapidapi.com/stock-metadata?Symbol=${stockSymbol}`, {
@@ -112,9 +108,21 @@ stockTwoTotalInvestment.innerText = hudsonStocks[1].totalPaid();
 
 
 
+searchBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    let inputStockSymbol = document.querySelector('#inputStockSymbol').value.toUpperCase();
+    if(inputStockSymbol.length > 4 || inputStockSymbol.length < 3) {
+        alert('Invalid Symbol - Stock Symbol Must Be 3 or 4 Characters');
+    } else {
+        const stockSymbolDisplay = document.querySelector('#stock-symbol-display');
+        const para = document.createElement("p");
 
-
-
+        para.innerText = `Your Symbol To Search Is: ${inputStockSymbol}`;
+        stockSymbolDisplay.appendChild(para);
+        console.log(inputStockSymbol);
+    }
+    inputStockSymbol.innerText = " ";
+});
 
 
 
