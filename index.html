@@ -26,160 +26,126 @@
   </head>
   <body>
     <section id="header">
-    <div class="container-md">
-      <div class="row">
-        <div class="col text-center">
-          <h1 class="display-1">Da Boys'<br> Stock Tracker</h1>
+      <div class="container-md">
+        <div class="row">
+          <div class="col text-center">
+            <h1 class="display-1">Da Boys'<br> Stock Tracker</h1>
+          </div>
+          <hr>
         </div>
-        <hr>
-      </div>
-      <div class="row">
-        <div class="container">
-        <h4 id="instructions">Click refresh to reload page, <br> other buttons to update respective sections.</h4>
+
+        <div class="row">
+          <div class="container">
+            <h4 id="instructions">Click refresh to reload page, <br> other buttons to update respective sections.</h4>
+          </div>
+
+          <div class="btn-group" role="group" aria-label="control-buttons">
+            <button type="button" class="btn btn-primary" id="refresh">Refresh</button>
+            <button type="button" class="btn btn-primary" id="hUpdateBtn">Hudson</button>
+            <button type="button" class="btn btn-primary" id="jUpdateBtn">Jack</button>
+          </div>
+          <hr>
         </div>
-        <div class="btn-group" role="group" aria-label="control-buttons">
-          <button type="button" class="btn btn-primary" id="refresh">Refresh</button>
-          <button type="button" class="btn btn-primary" id="hUpdateBtn">Hudson</button>
-          <button type="button" class="btn btn-primary" id="jUpdateBtn">Jack</button>
-        </div>
-        <hr>
-      </div>
       
-      <div class="row">
-        <h2>
-          Hudson Total Invested:
-          <span id="hTotalInvested">0</span>
-        </h2>
-        <h2>
-          Jack Total Invested: <span id="jTotalInvested">0</span>
-        </h2>
-      </div>
+        <div class="row">
+          <h2>Hudson Total Invested:<span id="hTotalInvested"></span></h2>
+          <h2>Jack Total Invested:<span id="jTotalInvested"></span></h2>
+        </div>
     </section>
 
     <section id="main">
       <div class="row">
         <div class="col-md-4">
           <h3 class="text-center">Hudson</h3>
-          </div>
-          <!-- <button class = "btn" id="hUpdateBtn">Update</button> -->
-          
-          <div class="container-md portfolio-container">
-            <div class="row label-row">
-              <div class="col-2 portfolio-data">
-                
-              </div>
-              <div class="col-2 portfolio-data">
-                #Owned
-              </div>
-              <div class="col-2 portfolio-data">
-                Price
-              </div>
-              <div class="col-2 portfolio-data">
-                
-                Total
-              </div>
-              <div class="col-2 portfolio-data">
-                
-                Value
-              </div>
-              <div class="col-2 portfolio-data">
-                + / -
-              </div>
+        </div>
+        
+        <div class="container-md portfolio-container">
+          <div class="row label-row">
+            <div class="col-2 portfolio-data"></div>
+              <div class="col-2 portfolio-data">#Owned</div>
+              <div class="col-2 portfolio-data">Price</div>
+              <div class="col-2 portfolio-data">Total</div>
+              <div class="col-2 portfolio-data">Value</div>
+              <div class="col-2 portfolio-data">+ / -</div>
               <hr>
-            </div>
-            <div class="row position-row">
-              <div class="col-2 portfolio-data stock-name" id="hStockOneName"></div>
-              <div class="col-2 portfolio-data" id="hStockOneShares"></div>
-              <div class="col-2 portfolio-data" id="hStockOneAveragePrice"></div>
-              <div class="col-2 portfolio-data" id="hStockOneTotalInvestment"></div>
-              <div class="col-2 portfolio-data" id="hStockOneMarketPrice"></div>
-              <div class="col-2 portfolio-data" id="hStockOneGainLoss"></div>
-            </div>
-            <div class="row position-row">
-              <div class="col-2 portfolio-data stock-name" id="hStockTwoName"></div>
-              <div class="col-2 portfolio-data" id="hStockTwoShares"></div>
-              <div class="col-2 portfolio-data" id="hStockTwoAveragePrice"></div>
-              <div class="col-2 portfolio-data" id="hStockTwoTotalInvestment"></div>
-              <div class="col-2 portfolio-data" id="hStockTwoMarketPrice"></div>
-              <div class="col-2 portfolio-data" id="hStockTwoGainLoss"></div>
-            </div>
-            
-            
+          </div>
+
+          <div class="row position-row">
+            <div class="col-2 portfolio-data stock-name" id="hStockOneName"></div>
+            <div class="col-2 portfolio-data" id="hStockOneShares"></div>
+            <div class="col-2 portfolio-data" id="hStockOneAveragePrice"></div>
+            <div class="col-2 portfolio-data" id="hStockOneTotalInvestment"></div>
+            <div class="col-2 portfolio-data" id="hStockOneMarketPrice"></div>
+            <div class="col-2 portfolio-data" id="hStockOneGainLoss"></div>
+          </div>
+
+          <div class="row position-row">
+            <div class="col-2 portfolio-data stock-name" id="hStockTwoName"></div>
+            <div class="col-2 portfolio-data" id="hStockTwoShares"></div>
+            <div class="col-2 portfolio-data" id="hStockTwoAveragePrice"></div>
+            <div class="col-2 portfolio-data" id="hStockTwoTotalInvestment"></div>
+            <div class="col-2 portfolio-data" id="hStockTwoMarketPrice"></div>
+            <div class="col-2 portfolio-data" id="hStockTwoGainLoss"></div>
           </div>
         </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <h3 class="text-center">Jack</h3>
         </div>
 
+        <div class="container-md portfolio-container">
+          <div class="row label-row">
+            <div class="col-2 portfolio-data"></div>
+            <div class="col-2 portfolio-data">#Owned</div>
+            <div class="col-2 portfolio-data">Price</div>
+            <div class="col-2 portfolio-data">Total</div>
+            <div class="col-2 portfolio-data">Value</div>
+            <div class="col-2 portfolio-data">+ / -</div>
+            <hr>
+          </div>
+
+          <div class="row position-row">
+            <div class="col-2 portfolio-data stock-name" id="jStockOneName"></div>
+            <div class="col-2 portfolio-data" id="jStockOneShares"></div>
+            <div class="col-2 portfolio-data" id="jStockOneAveragePrice"></div>
+            <div class="col-2 portfolio-data" id="jStockOneTotalInvestment"></div>
+            <div class="col-2 portfolio-data" id="jStockOneMarketPrice"></div>
+            <div class="col-2 portfolio-data" id="jStockOneGainLoss"></div>
+          </div>
+
+          <div class="row position-row">
+            <div class="col-2 portfolio-data stock-name" id="jStockTwoName"></div>
+            <div class="col-2 portfolio-data" id="jStockTwoShares"></div>
+            <div class="col-2 portfolio-data" id="jStockTwoAveragePrice"></div>
+            <div class="col-2 portfolio-data" id="jStockTwoTotalInvestment"></div>
+            <div class="col-2 portfolio-data" id="jStockTwoMarketPrice"></div>
+            <div class="col-2 portfolio-data" id="jStockTwoGainLoss"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="footer">
+      <div class="container">
         <div class="row">
-          <div class="col-md-12">
-            <h3 class="text-center">Jack</h3>
-            </div>
-            <!-- <button class="btn" id="jUpdateBtn">Update</button> -->
-            <div class="container-md portfolio-container">
-              <div class="row label-row">
-                <div class="col-2 portfolio-data">
-                  
-                </div>
-                <div class="col-2 portfolio-data">
-                  #Owned
-                </div>
-                <div class="col-2 portfolio-data">
-                  Price
-                </div>
-                <div class="col-2 portfolio-data">
-                  
-                  Total
-                </div>
-                <div class="col-2 portfolio-data">
-                  
-                  Value
-                </div>
-                <div class="col-2 portfolio-data">
-                  + / -
-                </div>
-                <hr>
-              </div>
-
-              <div class="row position-row">
-              <div class="col-2 portfolio-data stock-name" id="jStockOneName">0</div>
-              <div class="col-2 portfolio-data" id="jStockOneShares">0</div>
-              <div class="col-2 portfolio-data" id="jStockOneAveragePrice">0</div>
-              <div class="col-2 portfolio-data" id="jStockOneTotalInvestment"></div>
-              <div class="col-2 portfolio-data" id="jStockOneMarketPrice"></div>
-              <div class="col-2 portfolio-data" id="jStockOneGainLoss"></div>
-            </div>
-            <div class="row position-row">
-              <div class="col-2 portfolio-data stock-name" id="jStockTwoName"></div>
-              <div class="col-2 portfolio-data" id="jStockTwoShares"></div>
-              <div class="col-2 portfolio-data" id="jStockTwoAveragePrice"></div>
-              <div class="col-2 portfolio-data" id="jStockTwoTotalInvestment"></div>
-              <div class="col-2 portfolio-data" id="jStockTwoMarketPrice"></div>
-              <div class="col-2 portfolio-data" id="jStockTwoGainLoss"></div>
-            </div>
-              
-              
-            </div>
+          <h2 class="text-center">Stock Price Search</h2>
+        </div>
+        
+        <div class="row" id="search-row">
+          <div class="col-4">
+            <input type="text" placeholder="symbol" id="inputStockSymbol">
           </div>
+            
+          <div class="col-4">
+            <button class="btn btn-primary" id="searchBtn">Search</button>
           </div>
-      </section>
-      <section id="footer">
-        <div class="container">
-          <div class="row">
-            <h2 class="text-center">Stock Price Search</h2>
-          </div>
-          <div class="row" id="search-row">
-            <div class="col-4">
-              <input type="text" placeholder="symbol" id="inputStockSymbol">
-            </div>
-            <div class="col-4">
-              <button class="btn btn-primary" id="searchBtn">Search</button>
-            </div>
-          </div>
-
-      <div class="row" id="stock-symbol-display">
-
+        </div>
+        
+        <div class="row" id="stock-symbol-display"></div>
       </div>
-
-      </div>
+      
       <div class="copyright">
         <h3>Copyright 2022 | Andrew F. Butler</h3>
       </div>

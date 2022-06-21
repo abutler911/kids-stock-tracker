@@ -1,8 +1,3 @@
-/* #2D0C2C
-#BF9943;
-#D8CECD;
-#423336; */
-
 body {
     margin: 0;
     padding: 0;
@@ -10,7 +5,6 @@ body {
     background-color: rgba(205, 215, 255, 0.8);
     font-family: 'Poppins', sans-serif;
 }
-
 
 #header {
     background-color: rgba(205, 215, 255, 0.8);
@@ -21,11 +15,8 @@ body {
     text-align: center;
     margin: 10px;
     align-items: center;
-
     padding: 5px;
-
 }
-
 
 .btn-group {
     margin-bottom: 20px;
@@ -119,26 +110,11 @@ form {
     justify-content: center;
 }
 
-/* #searchBtn {
-    border: 1px solid grey;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    height: 2.5em;
-    margin: 0 auto;
-    width: 80%;
-}
-
-#searchBtn:hover {
-    background-color: rgba(5, 0, 250, 0.2);
-    box-shadow: rgba(5, 0, 250, 0.24) 0px 3px 8px;
-} */
-
 #inputStockSymbol {
     width: 100%;
     height: 2.5em;
     padding: 5px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
-
 }
 
 #stock-symbol-display p {

@@ -64,7 +64,7 @@ const requestStockName = async (stockSymbol) => {
     return stockName;
 };
 
-// // Hudson Stock Objects
+// // Hudson Stock Array
 
 let hudsonStocks = [
     {
@@ -90,6 +90,8 @@ let hudsonStocks = [
     }
 ]
 
+// Jack Stock Array
+
 let jackStocks = [
     {
         name: "LifeVantage",
@@ -114,8 +116,7 @@ let jackStocks = [
     }
 ]
 
-// // Hudson's Update Button  and Value and Gain Loss Functions
-
+// Button to update Hudson's positions
 hUpdateButton.addEventListener('click', (e) => {
     e.preventDefault();
     requestStockPrice(hudsonStocks[0].symbol).then(x => {
@@ -142,13 +143,12 @@ hUpdateButton.addEventListener('click', (e) => {
 });
 
 
-// Jack's Value and Gain Loss Functions
+// Button to update Jack's positions
  jUpdateButton.addEventListener('click', (e) => {
     e.preventDefault();
     requestStockPrice(jackStocks[0].symbol).then(x => {
         stockPrice = ((parseFloat(x).toFixed(2)) * jackStocks[0].shares).toFixed(2);
         jStockOneMarketPrice.innerText = stockPrice;
-        
         jStockOneGainLoss.innerText = (stockPrice - jackStocks[0].totalPaid()).toFixed(2);
         if(parseFloat(jStockOneGainLoss.innerText) < 0) {
             jStockOneGainLoss.classList.add('red');
@@ -157,22 +157,18 @@ hUpdateButton.addEventListener('click', (e) => {
         }
     });
     
-        requestStockPrice(jackStocks[1].symbol).then(x => {
-            stockPrice = ((parseFloat(x).toFixed(2)) * jackStocks[1].shares).toFixed(2);
-            jStockTwoMarketPrice.innerText = stockPrice;
-            
-            jStockTwoGainLoss.innerText = (stockPrice - jackStocks[1].totalPaid()).toFixed(2);
-            if(parseFloat(jStockTwoGainLoss.innerText) < 0) {
-                jStockTwoGainLoss.classList.add('red');
-            } else {
-                jStockTwoGainLoss.classList.add('green');
-            }
-        });
+    requestStockPrice(jackStocks[1].symbol).then(x => {
+        stockPrice = ((parseFloat(x).toFixed(2)) * jackStocks[1].shares).toFixed(2);
+        jStockTwoMarketPrice.innerText = stockPrice;
+        jStockTwoGainLoss.innerText = (stockPrice - jackStocks[1].totalPaid()).toFixed(2);
+        if(parseFloat(jStockTwoGainLoss.innerText) < 0) {
+            jStockTwoGainLoss.classList.add('red');
+        } else {
+            jStockTwoGainLoss.classList.add('green');
+        }
+    });
  });
     
-
-    
-
 searchBtn.addEventListener('click', (e) => {
     e.preventDefault();
     let inputStockSymbol = document.querySelector('#inputStockSymbol').value.toUpperCase();
@@ -185,8 +181,6 @@ searchBtn.addEventListener('click', (e) => {
             para.innerText = `Quote for ${inputStockSymbol} is $${stockPrice}`;
             stockSymbolDisplay.prepend(para);
         });
-
-        
     }
 });
 
@@ -201,6 +195,8 @@ hTotalInvested.innerText = `$${hTotalInvestment}`;
 const jTotalInvestment = (parseFloat(jackStocks[0].totalPaid()) + parseFloat(jackStocks[1].totalPaid())).toFixed(2);
 jTotalInvested.innerText = `$${jTotalInvestment}`;
 
+
+//Field numbers for both portfolios
 hStockOneName.innerText = hudsonStocks[0].name;
 hStockOneShares.innerText = hudsonStocks[0].shares;
 hStockOneAveragePrice.innerText = hudsonStocks[0].price;
@@ -210,8 +206,6 @@ hStockTwoName.innerText = hudsonStocks[1].name;
 hStockTwoShares.innerText = hudsonStocks[1].shares;
 hStockTwoAveragePrice.innerText = hudsonStocks[1].price;
 hStockTwoTotalInvestment.innerText = hudsonStocks[1].totalPaid();
-
-
 
 jStockOneName.innerText = jackStocks[0].name;
 jStockOneShares.innerText = jackStocks[0].shares;
