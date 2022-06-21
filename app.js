@@ -4,6 +4,8 @@ let hTotalValue;
 
 const searchBtn = document.querySelector('#searchBtn');
 const refreshBtn = document.querySelector('#refresh');
+const hUpdateButton = document.querySelector('#hUpdateBtn');
+const jUpdateButton = document.querySelector('#jUpdateBtn');
 
 const hStockOneName = document.querySelector('#hStockOneName');
 const hStockOneShares = document.querySelector('#hStockOneShares');
@@ -91,7 +93,7 @@ let hudsonStocks = [
 let jackStocks = [
     {
         name: "LifeVantage",
-        symbol: "LVFN",
+        symbol: "LFVN",
         shares: 1,
         price: 4.29,
         totalPaid: function(shares, price) {
@@ -112,58 +114,62 @@ let jackStocks = [
     }
 ]
 
-// Hudson's Value and Gain Loss Functions
-requestStockPrice(hudsonStocks[0].symbol).then(x => {
-    stockPrice = ((parseFloat(x).toFixed(2)) * hudsonStocks[0].shares).toFixed(2);
-    hStockOneMarketPrice.innerText = stockPrice;
-    
-    hStockOneGainLoss.innerText = (stockPrice - hudsonStocks[0].totalPaid()).toFixed(2);
-    if(parseFloat(hStockOneGainLoss.innerText) < 0) {
-        hStockOneGainLoss.classList.add('red');
-    } else {
-        hStockOneGainLoss.classList.add('green');
-    }
-});
+// // Hudson's Update Button  and Value and Gain Loss Functions
 
-requestStockPrice(hudsonStocks[1].symbol).then(x => {
-    stockPrice = ((parseFloat(x).toFixed(2)) * hudsonStocks[1].shares).toFixed(2);
-    hStockTwoMarketPrice.innerText = stockPrice;
-    
-    hStockTwoGainLoss.innerText = (stockPrice - hudsonStocks[1].totalPaid()).toFixed(2);
-    if(parseFloat(hStockTwoGainLoss.innerText) < 0) {
-        hStockTwoGainLoss.classList.add('red');
-    } else {
-        hStockTwoGainLoss.classList.add('green');
-    }
+hUpdateButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    requestStockPrice(hudsonStocks[0].symbol).then(x => {
+        stockPrice = ((parseFloat(x).toFixed(2)) * hudsonStocks[0].shares).toFixed(2);
+        hStockOneMarketPrice.innerText = stockPrice;
+        hStockOneGainLoss.innerText = (stockPrice - hudsonStocks[0].totalPaid()).toFixed(2);
+        if(parseFloat(hStockOneGainLoss.innerText) < 0) {
+            hStockOneGainLoss.classList.add('red');
+        } else {
+            hStockOneGainLoss.classList.add('green');
+        }
+    });
+
+    requestStockPrice(hudsonStocks[1].symbol).then(x => {
+        stockPrice = ((parseFloat(x).toFixed(2)) * hudsonStocks[1].shares).toFixed(2);
+        hStockTwoMarketPrice.innerText = stockPrice;
+        hStockTwoGainLoss.innerText = (stockPrice - hudsonStocks[1].totalPaid()).toFixed(2);
+        if(parseFloat(hStockTwoGainLoss.innerText) < 0) {
+            hStockTwoGainLoss.classList.add('red');
+        } else {
+            hStockTwoGainLoss.classList.add('green');
+        }
+    });
 });
 
 
 // Jack's Value and Gain Loss Functions
-// setTimeout(    
-//     requestStockPrice(jackStocks[0].symbol).then(x => {
-//     stockPrice = ((parseFloat(x).toFixed(2)) * jackStocks[0].shares).toFixed(2);
-//     jStockOneMarketPrice.innerText = stockPrice;
-    
-//     jStockOneGainLoss.innerText = (stockPrice - jackStocks[0].totalPaid()).toFixed(2);
-//     if(parseFloat(jStockOneGainLoss.innerText) < 0) {
-//         jStockOneGainLoss.classList.add('red');
-//     } else {
-//         jStockOneGainLoss.classList.add('green');
-//     }
-// }), 5000);
-
-// setTimeout(
-//     requestStockPrice(jackStocks[1].symbol).then(x => {
-//         stockPrice = ((parseFloat(x).toFixed(2)) * jackStocks[1].shares).toFixed(2);
-//         jStockTwoMarketPrice.innerText = stockPrice;
+ jUpdateButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    requestStockPrice(jackStocks[0].symbol).then(x => {
+        stockPrice = ((parseFloat(x).toFixed(2)) * jackStocks[0].shares).toFixed(2);
+        jStockOneMarketPrice.innerText = stockPrice;
         
-//         jStockTwoGainLoss.innerText = (stockPrice - jackStocks[1].totalPaid()).toFixed(2);
-//         if(parseFloat(jStockTwoGainLoss.innerText) < 0) {
-//             jStockTwoGainLoss.classList.add('red');
-//         } else {
-//             jStockTwoGainLoss.classList.add('green');
-//         }
-//     }), 5000);
+        jStockOneGainLoss.innerText = (stockPrice - jackStocks[0].totalPaid()).toFixed(2);
+        if(parseFloat(jStockOneGainLoss.innerText) < 0) {
+            jStockOneGainLoss.classList.add('red');
+        } else {
+            jStockOneGainLoss.classList.add('green');
+        }
+    });
+    
+        requestStockPrice(jackStocks[1].symbol).then(x => {
+            stockPrice = ((parseFloat(x).toFixed(2)) * jackStocks[1].shares).toFixed(2);
+            jStockTwoMarketPrice.innerText = stockPrice;
+            
+            jStockTwoGainLoss.innerText = (stockPrice - jackStocks[1].totalPaid()).toFixed(2);
+            if(parseFloat(jStockTwoGainLoss.innerText) < 0) {
+                jStockTwoGainLoss.classList.add('red');
+            } else {
+                jStockTwoGainLoss.classList.add('green');
+            }
+        });
+ });
+    
 
     
 
