@@ -36,10 +36,10 @@
       <div class="row">
         <h2>
           Hudson Total Value:
-          <span id="hTotalValue">$10.20</span>
+          <span id="hTotalValue">0</span>
         </h2>
         <h2>
-          Jack Total Value: <span id="jTotalValue">$10.50</span>
+          Jack Total Value: <span id="jTotalValue">0</span>
         </h2>
       </div>
     </section>
@@ -74,44 +74,20 @@
               <hr>
             </div>
             <div class="row position-row">
-              <div class="col-2 portfolio-data stock-name">
-                Sofi, Inc.
-              </div>
-              <div class="col-2 portfolio-data">
-                2
-              </div>
-              <div class="col-2 portfolio-data">
-                $5.45
-              </div>
-              <div class="col-2 portfolio-data">
-                $10.90
-              </div>
-              <div class="col-2 portfolio-data">
-                $10.00
-              </div>
-              <div class="col-2 portfolio-data">
-                -0.90
-              </div>
+              <div class="col-2 portfolio-data stock-name" id="stockOneName"></div>
+              <div class="col-2 portfolio-data" id="stockOneShares"></div>
+              <div class="col-2 portfolio-data" id="stockOneAveragePrice"></div>
+              <div class="col-2 portfolio-data" id="stockOneTotalInvestment"></div>
+              <div class="col-2 portfolio-data" id="stockOneMarketPrice"></div>
+              <div class="col-2 portfolio-data" id="stockOneGainLoss"></div>
             </div>
             <div class="row position-row">
-              <div class="col-2 portfolio-data stock-name">
-                GoPro
-              </div>
-              <div class="col-2 portfolio-data">
-                2
-              </div>
-              <div class="col-2 portfolio-data">
-                $5.45
-              </div>
-              <div class="col-2 portfolio-data">
-                $10.90
-              </div>
-              <div class="col-2 portfolio-data">
-                $10.00
-              </div>
-              <div class="col-2 portfolio-data">
-                -0.90
-              </div>
+              <div class="col-2 portfolio-data stock-name" id="stockTwoName"></div>
+              <div class="col-2 portfolio-data" id="stockTwoShares"></div>
+              <div class="col-2 portfolio-data" id="stockTwoAveragePrice"></div>
+              <div class="col-2 portfolio-data" id="stockTwoTotalInvestment"></div>
+              <div class="col-2 portfolio-data" id="stockTwoMarketPrice"></div>
+              <div class="col-2 portfolio-data" id="stockTwoGainLoss"></div>
             </div>
             
             
@@ -222,6 +198,5 @@
       crossorigin="anonymous"
     ></script>
     <script src="app.js"></script>
-    <script src="stocks.js"></script>
   </body>
 </html>

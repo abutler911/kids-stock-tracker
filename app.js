@@ -1,19 +1,47 @@
 let stats;
 let newMarketValue;
+let stockPrice;
 
-const requestStockData = async () => {
-    const response = await fetch(`https://yahoofinance-stocks1.p.rapidapi.com/stock-metadata?Symbol=${hudsonStocks[0].symbol}`, {
+const stockOneName = document.querySelector('#stockOneName');
+const stockOneShares = document.querySelector('#stockOneShares');
+const stockOneAveragePrice = document.querySelector('#stockOneAveragePrice');
+const stockOneTotalInvestment = document.querySelector('#stockOneTotalInvestment');
+const stockOneMarketPrice = document.querySelector('#stockOneMarketPrice');
+const stockOneGainLoss = document.querySelector('#stockOneGainLoss');
+
+const stockTwoName = document.querySelector('#stockTwoName');
+const stockTwoShares = document.querySelector('#stockTwoShares');
+const stockTwoAveragePrice = document.querySelector('#stockTwoAveragePrice');
+const stockTwoTotalInvestment = document.querySelector('#stockTwoTotalInvestment');
+const stockTwoMarketPrice = document.querySelector('#stockTwoMarketPrice');
+const stockTwoGainLoss = document.querySelector('#stockTwoGainLoss');
+
+const hTotalValue = document.querySelector('#hTotalValue');
+
+const requestStockData = async (stockSymbol) => {
+    const response = await fetch(`https://yahoofinance-stocks1.p.rapidapi.com/stock-metadata?Symbol=${stockSymbol}`, {
         method: 'GET',
 	    headers: {
 		'X-RapidAPI-Key': '4799f1a6b5msh2524eb4f30aaee4p118153jsn4bba6da3d36e',
 		'X-RapidAPI-Host': 'yahoofinance-stocks1.p.rapidapi.com'
     }
-});
-const data = await response.json();
-stats = data;
 }
 
-// Hudson Stock Objects
+
+
+);
+
+
+const data = await response.json()
+stats = data;
+stockPrice = stats.result.regularMarketPrice;
+return stockPrice;
+
+
+};
+
+
+// // Hudson Stock Objects
 
 let hudsonStocks = [
     {
@@ -21,122 +49,91 @@ let hudsonStocks = [
         symbol: "SOFI",
         shares: 1,
         price: 5.98,
-        marketValue: 3.43,
         totalPaid: function(shares, price) {
-            return this.shares * this.price;
+            return (this.shares * this.price).toFixed(2);
         },
-        gainLoss: function(shares, price, value) {
-            return ((this.price * this.shares) - (this.marketValue * this.shares)).toFixed(2);
-        }
+        gainLoss: 0
     },
+
     {
         name: "GoPro",
         symbol: "GPRO",
         shares: 1,
         price: 6.39,
-        marketValue: 5.24,
+        // marketValue: requestStockData(this.symbol).then(() => {
+        //     console.log(stats.result.regularMarketPrice);
+        // }),
         totalPaid: function(shares, price) {
             return this.shares * this.price;
         },
-        gainLoss: function(shares, price, value) {
-            return ((this.price * this.shares) - (this.marketValue * this.shares)).toFixed(2);
-        }
+        gainLoss: 1
     }
 ]
 
-for (let i = 0; i < hudsonStocks.length; i++) {
-    console.log(`${hudsonStocks[i].name}: ${hudsonStocks[i].symbol}`);
-}
+requestStockData(hudsonStocks[0].symbol).then(x => {
+    stockPrice = ((parseFloat(x).toFixed(2)) * hudsonStocks[0].shares).toFixed(2);
+    stockOneMarketPrice.innerText = stockPrice;
+    stockOneGainLoss.innerText = (stockPrice - hudsonStocks[0].totalPaid()).toFixed(2);
+});
 
-
-
-// let hudsonStockOne = {
-//     name: "Sofi",
-//     symbol: "SOFI",
-//     shares: 1,
-//     price: 5.98,
-//     marketValue: 3.43,
-//     totalPaid: function(shares, price) {
-//         return this.shares * this.price;
-//     },
-//     gainLoss: function(shares, price, value) {
-//         return ((this.price * this.shares) - (this.marketValue * this.shares)).toFixed(2);
-//     }
-// };
-
-// const hudsonStockTwo = {
-//     name: "GoPro",
-//     shares: 1,
-//     price: 6.39,
-//     marketValue: 5.24,
-//     totalPaid: function(shares, price) {
-//         return this.shares * this.price;
-//     },
-//     gainLoss: function(shares, price, value) {
-//         return ((this.price * this.shares) - (this.marketValue * this.shares)).toFixed(2);
-//     }
-// };
-
-// Jack Stock Objects
-
-const jackStockOne = {
-    name: "LifeVantage",
-    shares: 1,
-    price: 5.98,
-    marketValue: 5.24,
-    totalPaid: function(shares, price) {
-        return this.shares * this.price;
-    },
-    gainLoss: function(shares, price, value) {
-        return ((this.price * this.shares) - (this.marketValue * this.shares)).toFixed(2);
-    }
-};
-
-const jackStockTwo = {
-    name: "Ford Motor Co.",
-    shares: 1,
-    price: 6.39,
-    marketValue: 5.24,
-    totalPaid: function(shares, price) {
-        return this.shares * this.price;
-    },
-    gainLoss: function(shares, price, value) {
-        return ((this.price * this.shares) - (this.marketValue * this.shares)).toFixed(2);
-    }
-};
-requestStockData().then(() => {
-    console.log(stats.result.regularMarketPrice);
-    document.querySelector("#hudsonShareValueOne").innerText = `$${stats.result.regularMarketPrice}`;
-    document.querySelector("#hudsonGainLossOne").innerText = `$${hudsonStocks[0].gainLoss()}`;
+requestStockData(hudsonStocks[1].symbol).then(x => {
+    stockPrice = ((parseFloat(x).toFixed(2)) * hudsonStocks[1].shares).toFixed(2);
+    stockTwoMarketPrice.innerText = stockPrice;
+    stockTwoGainLoss.innerText = (stockPrice - hudsonStocks[1].totalPaid()).toFixed(2);
 });
 
 
-document.querySelector("#jackNameOne").innerText = jackStockOne.name;
-document.querySelector("#jackNumberOfSharesOne").innerText = jackStockOne.shares;
-document.querySelector("#jackSharePriceOne").innerText = `$${jackStockOne.price}`;
-document.querySelector("#jackTotalOne").innerText = `$${jackStockOne.totalPaid()}`;
-document.querySelector("#jackShareValueOne").innerText = `$${jackStockOne.marketValue}`;
-document.querySelector("#jackGainLossOne").innerText = `$${jackStockOne.gainLoss()}`;
 
-document.querySelector("#jackNameTwo").innerText = jackStockTwo.name;
-document.querySelector("#jackNumberOfSharesTwo").innerText = jackStockTwo.shares;
-document.querySelector("#jackSharePriceTwo").innerText = `$${jackStockTwo.price}`;
-document.querySelector("#jackTotalTwo").innerText = `$${jackStockTwo.totalPaid()}`;
-document.querySelector("#jackShareValueTwo").innerText = `$${jackStockTwo.marketValue}`;
-document.querySelector("#jackGainLossTwo").innerText = `$${jackStockTwo.gainLoss()}`;
+stockOneName.innerText = hudsonStocks[0].name;
+stockOneShares.innerText = hudsonStocks[0].shares;
+stockOneAveragePrice.innerText = hudsonStocks[0].price;
+stockOneTotalInvestment.innerText = hudsonStocks[0].totalPaid();
 
-document.querySelector("#hudsonNameOne").innerText = hudsonStocks[0].name;
-document.querySelector("#hudsonNumberOfSharesOne").innerText = hudsonStocks[0].shares;
-document.querySelector("#hudsonSharePriceOne").innerText = `$${hudsonStocks[0].price}`;
-document.querySelector("#hudsonTotalOne").innerText = `$${hudsonStocks[0].totalPaid()}`;
-
-
-// document.querySelector("#hudsonNameTwo").innerText = hudsonStockTwo.name;
-// document.querySelector("#hudsonNumberOfSharesTwo").innerText = hudsonStockTwo.shares;
-// document.querySelector("#hudsonSharePriceTwo").innerText = `$${hudsonStockTwo.price}`;
-// document.querySelector("#hudsonTotalTwo").innerText = `$${hudsonStockTwo.totalPaid()}`;
-// document.querySelector("#hudsonShareValueTwo").innerText = `$${hudsonStockTwo.marketValue}`;
-// document.querySelector("#hudsonGainLossTwo").innerText = `$${hudsonStockTwo.gainLoss()}`;
+stockTwoName.innerText = hudsonStocks[1].name;
+stockTwoShares.innerText = hudsonStocks[1].shares;
+stockTwoAveragePrice.innerText = hudsonStocks[1].price;
+stockTwoTotalInvestment.innerText = hudsonStocks[1].totalPaid();
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// stockOneMarketPrice.innerText = requestStockData('SOFI').then(x => {
+//     stockPrice = x;
+//     console.log(`Current Price is = ${stockPrice}`);
+// });
+
+// stockOneGainLoss.innerText = hudsonStocks[0].gainLoss();
+
+
+// requestStockData(hudsonStocks[0].symbol).then(() => {
+//     stockPrice = stats.result.regularMarketPrice;
+//     stockOneMarketPrice.innerText = `$${stats.result.regularMarketPrice}`;
+//     console.log(stats.result.regularMarketPrice);
+//     console.log(stockPrice);
+//     console.log(typeof(stockPrice));
+//     return stockPrice;
+// });
+
+
+// console.log(stockPrice);
