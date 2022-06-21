@@ -1,8 +1,10 @@
 let stats;
 let newMarketValue;
 let stockPrice;
+let hTotalValue;
 
 const searchBtn = document.querySelector('#searchBtn');
+const refreshBtn = document.querySelector('#refresh');
 
 const stockOneName = document.querySelector('#stockOneName');
 const stockOneShares = document.querySelector('#stockOneShares');
@@ -18,7 +20,7 @@ const stockTwoTotalInvestment = document.querySelector('#stockTwoTotalInvestment
 const stockTwoMarketPrice = document.querySelector('#stockTwoMarketPrice');
 const stockTwoGainLoss = document.querySelector('#stockTwoGainLoss');
 
-const hTotalValue = document.querySelector('#hTotalValue');
+const hTotalInvested = document.querySelector('#hTotalInvested');
 
 const requestStockData = async (stockSymbol) => {
     const response = await fetch(`https://yahoofinance-stocks1.p.rapidapi.com/stock-metadata?Symbol=${stockSymbol}`, {
@@ -65,9 +67,34 @@ let hudsonStocks = [
     }
 ]
 
+let jackStocks = [
+    {
+        name: "LifeVantage",
+        symbol: "LVFN",
+        shares: 1,
+        price: 4.29,
+        totalPaid: function(shares, price) {
+            return (this.shares * this.price).toFixed(2);
+        },
+        gainLoss: 0
+    },
+
+    {
+        name: "Ford",
+        symbol: "F",
+        shares: 1,
+        price: 13.85,
+        totalPaid: function(shares, price) {
+            return this.shares * this.price;
+        },
+        gainLoss: 0
+    }
+]
+
 requestStockData(hudsonStocks[0].symbol).then(x => {
     stockPrice = ((parseFloat(x).toFixed(2)) * hudsonStocks[0].shares).toFixed(2);
     stockOneMarketPrice.innerText = stockPrice;
+    
     stockOneGainLoss.innerText = (stockPrice - hudsonStocks[0].totalPaid()).toFixed(2);
     if(parseFloat(stockOneGainLoss.innerText) < 0) {
         stockOneGainLoss.classList.add('red');
@@ -79,6 +106,7 @@ requestStockData(hudsonStocks[0].symbol).then(x => {
 requestStockData(hudsonStocks[1].symbol).then(x => {
     stockPrice = ((parseFloat(x).toFixed(2)) * hudsonStocks[1].shares).toFixed(2);
     stockTwoMarketPrice.innerText = stockPrice;
+    
     stockTwoGainLoss.innerText = (stockPrice - hudsonStocks[1].totalPaid()).toFixed(2);
     if(parseFloat(stockTwoGainLoss.innerText) < 0) {
         stockTwoGainLoss.classList.add('red');
@@ -119,41 +147,12 @@ searchBtn.addEventListener('click', (e) => {
     }
 });
 
+refreshBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.reload();
+})
 
+const hTotalInvestment = (parseFloat(hudsonStocks[0].totalPaid()) + parseFloat(hudsonStocks[1].totalPaid())).toFixed(2);
+hTotalInvested.innerText = `$${hTotalInvestment}`;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// stockOneMarketPrice.innerText = requestStockData('SOFI').then(x => {
-//     stockPrice = x;
-//     console.log(`Current Price is = ${stockPrice}`);
-// });
-
-// stockOneGainLoss.innerText = hudsonStocks[0].gainLoss();
-
-
-// requestStockData(hudsonStocks[0].symbol).then(() => {
-//     stockPrice = stats.result.regularMarketPrice;
-//     stockOneMarketPrice.innerText = `$${stats.result.regularMarketPrice}`;
-//     console.log(stats.result.regularMarketPrice);
-//     console.log(stockPrice);
-//     console.log(typeof(stockPrice));
-//     return stockPrice;
-// });
-
-
-// console.log(stockPrice);
+console.log(stockOneGainLoss.innerText);
