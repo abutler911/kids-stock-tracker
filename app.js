@@ -1,4 +1,3 @@
-let stats;
 let newMarketValue;
 let stockPrice;
 let hTotalValue;
@@ -22,24 +21,28 @@ const stockTwoGainLoss = document.querySelector('#stockTwoGainLoss');
 
 const hTotalInvested = document.querySelector('#hTotalInvested');
 
-const requestStockData = async (stockSymbol) => {
-    const response = await fetch(`https://yahoofinance-stocks1.p.rapidapi.com/stock-metadata?Symbol=${stockSymbol}`, {
-        method: 'GET',
-	    headers: {
+const options = {
+	method: 'GET',
+	headers: {
 		'X-RapidAPI-Key': '4799f1a6b5msh2524eb4f30aaee4p118153jsn4bba6da3d36e',
 		'X-RapidAPI-Host': 'yahoofinance-stocks1.p.rapidapi.com'
-    }
-}
-
-);
-
-const data = await response.json()
-stats = data;
-stockName = stats.result.shortName;
-stockPrice = stats.result.regularMarketPrice;
-return stockPrice;
+	}
 };
 
+
+const requestStockPrice = async (stockSymbol) => {
+    const response = await fetch(`https://yahoofinance-stocks1.p.rapidapi.com/stock-metadata?Symbol=${stockSymbol}`, options)
+    const data = await response.json()
+    stockPrice = data.result.regularMarketPrice;
+    return stockPrice;
+};
+
+const requestStockName = async (stockSymbol) => {
+    const response = await fetch(`https://yahoofinance-stocks1.p.rapidapi.com/stock-metadata?Symbol=${stockSymbol}`, options)
+    const data = await response.json()
+    stockName = data.result.shortName;
+    return stockName;
+};
 
 // // Hudson Stock Objects
 
@@ -91,7 +94,7 @@ let jackStocks = [
     }
 ]
 
-requestStockData(hudsonStocks[0].symbol).then(x => {
+requestStockPrice(hudsonStocks[0].symbol).then(x => {
     stockPrice = ((parseFloat(x).toFixed(2)) * hudsonStocks[0].shares).toFixed(2);
     stockOneMarketPrice.innerText = stockPrice;
     
@@ -103,7 +106,7 @@ requestStockData(hudsonStocks[0].symbol).then(x => {
     }
 });
 
-requestStockData(hudsonStocks[1].symbol).then(x => {
+requestStockPrice(hudsonStocks[1].symbol).then(x => {
     stockPrice = ((parseFloat(x).toFixed(2)) * hudsonStocks[1].shares).toFixed(2);
     stockTwoMarketPrice.innerText = stockPrice;
     
@@ -135,8 +138,7 @@ searchBtn.addEventListener('click', (e) => {
     if(inputStockSymbol.length > 4 || inputStockSymbol.length < 1) {
         alert('Invalid Symbol - Stock Symbol Must Be 1 to 4 Characters');
     } else {
-        requestStockData(inputStockSymbol).then(x => {
-
+        requestStockPrice(inputStockSymbol).then(x => {
             const stockSymbolDisplay = document.querySelector('#stock-symbol-display');
             const para = document.createElement("p");
             para.innerText = `Quote for ${inputStockSymbol} is $${stockPrice}`;
@@ -155,4 +157,3 @@ refreshBtn.addEventListener('click', (e) => {
 const hTotalInvestment = (parseFloat(hudsonStocks[0].totalPaid()) + parseFloat(hudsonStocks[1].totalPaid())).toFixed(2);
 hTotalInvested.innerText = `$${hTotalInvestment}`;
 
-console.log(stockOneGainLoss.innerText);
