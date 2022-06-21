@@ -19,9 +19,6 @@ const stockTwoMarketPrice = document.querySelector('#stockTwoMarketPrice');
 const stockTwoGainLoss = document.querySelector('#stockTwoGainLoss');
 
 const hTotalValue = document.querySelector('#hTotalValue');
-console.log(searchBtn);
-
-
 
 const requestStockData = async (stockSymbol) => {
     const response = await fetch(`https://yahoofinance-stocks1.p.rapidapi.com/stock-metadata?Symbol=${stockSymbol}`, {
@@ -32,25 +29,13 @@ const requestStockData = async (stockSymbol) => {
     }
 }
 
-
-
 );
-
 
 const data = await response.json()
 stats = data;
-console.log(stats);
 stockName = stats.result.shortName;
-console.log(stockName);
-
 stockPrice = stats.result.regularMarketPrice;
-
-return {
-    name: stockName,
-    price: stockPrice
-};
-
-
+return stockPrice;
 };
 
 
@@ -127,7 +112,7 @@ searchBtn.addEventListener('click', (e) => {
             const stockSymbolDisplay = document.querySelector('#stock-symbol-display');
             const para = document.createElement("p");
             para.innerText = `Quote for ${inputStockSymbol} is $${stockPrice}`;
-            stockSymbolDisplay.appendChild(para);
+            stockSymbolDisplay.prepend(para);
         });
 
         
