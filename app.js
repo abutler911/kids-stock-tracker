@@ -2,10 +2,21 @@ let newMarketValue;
 let stockPrice;
 let hTotalValue;
 
+let hTotalGain;
+let hStockOneGain;
+let hStockTwoGain;
+
+let jTotalGain;
+let jStockOneGain;
+let jStockTwoGain;
+
 const searchBtn = document.querySelector('#searchBtn');
 const refreshBtn = document.querySelector('#refresh');
 const hUpdateButton = document.querySelector('#hUpdateBtn');
 const jUpdateButton = document.querySelector('#jUpdateBtn');
+
+const hGainsLosses = document.querySelector('#hudson-gains-losses');
+const jGainsLosses = document.querySelector('#jack-gains-losses');
 
 const hStockOneName = document.querySelector('#hStockOneName');
 const hStockOneShares = document.querySelector('#hStockOneShares');
@@ -116,6 +127,7 @@ let jackStocks = [
     }
 ]
 
+
 // Button to update Hudson's positions
 hUpdateButton.addEventListener('click', (e) => {
     e.preventDefault();
@@ -123,6 +135,7 @@ hUpdateButton.addEventListener('click', (e) => {
         stockPrice = ((parseFloat(x).toFixed(2)) * hudsonStocks[0].shares).toFixed(2);
         hStockOneMarketPrice.innerText = stockPrice;
         hStockOneGainLoss.innerText = (stockPrice - hudsonStocks[0].totalPaid()).toFixed(2);
+        hTotalGain = (stockPrice - hudsonStocks[0].totalPaid()).toFixed(2);
         if(parseFloat(hStockOneGainLoss.innerText) < 0) {
             hStockOneGainLoss.classList.add('red');
         } else {
@@ -134,12 +147,20 @@ hUpdateButton.addEventListener('click', (e) => {
         stockPrice = ((parseFloat(x).toFixed(2)) * hudsonStocks[1].shares).toFixed(2);
         hStockTwoMarketPrice.innerText = stockPrice;
         hStockTwoGainLoss.innerText = (stockPrice - hudsonStocks[1].totalPaid()).toFixed(2);
+        hTotalGain = parseFloat(hTotalGain) + parseFloat((stockPrice - hudsonStocks[1].totalPaid()).toFixed(2));
+        
         if(parseFloat(hStockTwoGainLoss.innerText) < 0) {
             hStockTwoGainLoss.classList.add('red');
         } else {
             hStockTwoGainLoss.classList.add('green');
         }
     });
+    hGainsLosses.innerText = hTotalGain.toFixed(2);
+    if(parseFloat(hGainsLosses.innerText) < 0) {
+        hGainsLosses.classList.add('red');
+    } else {
+        hGainsLosses.classList.add('green');
+    }
 });
 
 
@@ -150,6 +171,7 @@ hUpdateButton.addEventListener('click', (e) => {
         stockPrice = ((parseFloat(x).toFixed(2)) * jackStocks[0].shares).toFixed(2);
         jStockOneMarketPrice.innerText = stockPrice;
         jStockOneGainLoss.innerText = (stockPrice - jackStocks[0].totalPaid()).toFixed(2);
+        jTotalGain = (stockPrice - jackStocks[0].totalPaid()).toFixed(2);
         if(parseFloat(jStockOneGainLoss.innerText) < 0) {
             jStockOneGainLoss.classList.add('red');
         } else {
@@ -161,12 +183,19 @@ hUpdateButton.addEventListener('click', (e) => {
         stockPrice = ((parseFloat(x).toFixed(2)) * jackStocks[1].shares).toFixed(2);
         jStockTwoMarketPrice.innerText = stockPrice;
         jStockTwoGainLoss.innerText = (stockPrice - jackStocks[1].totalPaid()).toFixed(2);
+        jTotalGain = parseFloat(jTotalGain) + parseFloat((stockPrice - jackStocks[1].totalPaid()).toFixed(2));
         if(parseFloat(jStockTwoGainLoss.innerText) < 0) {
             jStockTwoGainLoss.classList.add('red');
         } else {
             jStockTwoGainLoss.classList.add('green');
         }
     });
+    jGainsLosses.innerText = parseFloat(jTotalGain).toFixed(2);
+    if(parseFloat(jGainsLosses.innerText) < 0) {
+        jGainsLosses.classList.add('red');
+    } else {
+        jGainsLosses.classList.add('green');
+    }
  });
     
 searchBtn.addEventListener('click', (e) => {

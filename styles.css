@@ -2,12 +2,12 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: rgba(205, 215, 255, 0.8);
+    background-color: rgba(205, 215, 255, 0.5);
     font-family: 'Poppins', sans-serif;
 }
 
 #header {
-    background-color: rgba(205, 215, 255, 0.8);
+    background-color: rgba(205, 215, 255, 0.5);
 }
 
 #instructions {
@@ -38,13 +38,13 @@ body {
 #main {
     border-top: 1px solid grey;
     padding: 10px;
-    background-color: rgba(205, 215, 255, 0.8);
+    background-color: rgba(205, 215, 255, 0.5);
 }
 
 #footer {
     border-top: 1px solid grey;
     padding: 10px;
-    background-color: rgba(205, 215, 255, 0.8);
+    background-color: rgba(205, 215, 255, 0.5);
 }
 
 #footer h2 {
@@ -128,4 +128,22 @@ form {
 
 .red {
     color: red;
+}
+
+#hudson-gains-losses {
+    font-size: 1.3em;
+    margin-left: 15px;
+    margin-bottom: 20px;
+}
+
+#jack-gains-losses {
+    font-size: 1.3em;
+    margin-left: 15px;
+    margin-bottom: 20px;
+}
+
+#version {
+    font-size: 0.6em;
+    text-align: center;
+    letter-spacing: 0.3em;
 }
