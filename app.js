@@ -50,30 +50,22 @@ const jStockTwoGainLoss = document.querySelector('#jStockTwoGainLoss');
 
 const jTotalInvested = document.querySelector('#jTotalInvested');
 
-
-
 const options = {
 	method: 'GET',
 	headers: {
 		'X-RapidAPI-Key': '4799f1a6b5msh2524eb4f30aaee4p118153jsn4bba6da3d36e',
-		'X-RapidAPI-Host': 'yahoofinance-stocks1.p.rapidapi.com'
+		'X-RapidAPI-Host': 'realstonks.p.rapidapi.com'
 	}
 };
 
-
 const requestStockPrice = async (stockSymbol) => {
-    const response = await fetch(`https://yahoofinance-stocks1.p.rapidapi.com/stock-metadata?Symbol=${stockSymbol}`, options)
-    const data = await response.json()
-    stockPrice = data.result.regularMarketPrice;
+    const response = await fetch(`https://realstonks.p.rapidapi.com/${stockSymbol}`, options)
+    const data = await response.json();
+    console.log(data);
+    stockPrice = data.price;
     return stockPrice;
 };
 
-const requestStockName = async (stockSymbol) => {
-    const response = await fetch(`https://yahoofinance-stocks1.p.rapidapi.com/stock-metadata?Symbol=${stockSymbol}`, options)
-    const data = await response.json()
-    stockName = data.result.shortName;
-    return stockName;
-};
 
 // // Hudson Stock Array
 
@@ -245,3 +237,52 @@ jStockTwoName.innerText = jackStocks[1].name;
 jStockTwoShares.innerText = jackStocks[1].shares;
 jStockTwoAveragePrice.innerText = jackStocks[1].price;
 jStockTwoTotalInvestment.innerText = jackStocks[1].totalPaid();
+
+requestStockPrice(hudsonStocks[0].symbol).then(x => {
+    stockPrice = ((parseFloat(x).toFixed(2)) * hudsonStocks[0].shares).toFixed(2);
+    hStockOneMarketPrice.innerText = stockPrice;
+    hStockOneGainLoss.innerText = (stockPrice - hudsonStocks[0].totalPaid()).toFixed(2);
+    hTotalGain = (stockPrice - hudsonStocks[0].totalPaid()).toFixed(2);
+    if(parseFloat(hStockOneGainLoss.innerText) < 0) {
+        hStockOneGainLoss.classList.add('red');
+    } else {
+        hStockOneGainLoss.classList.add('green');
+    }
+});
+
+requestStockPrice(hudsonStocks[1].symbol).then(x => {
+    stockPrice = ((parseFloat(x).toFixed(2)) * hudsonStocks[1].shares).toFixed(2);
+    hStockTwoMarketPrice.innerText = stockPrice;
+    hStockTwoGainLoss.innerText = (stockPrice - hudsonStocks[1].totalPaid()).toFixed(2);
+    hTotalGain = parseFloat(hTotalGain) + parseFloat((stockPrice - hudsonStocks[1].totalPaid()).toFixed(2));
+    
+    if(parseFloat(hStockTwoGainLoss.innerText) < 0) {
+        hStockTwoGainLoss.classList.add('red');
+    } else {
+        hStockTwoGainLoss.classList.add('green');
+    }
+});
+
+requestStockPrice(jackStocks[0].symbol).then(x => {
+    stockPrice = ((parseFloat(x).toFixed(2)) * jackStocks[0].shares).toFixed(2);
+    jStockOneMarketPrice.innerText = stockPrice;
+    jStockOneGainLoss.innerText = (stockPrice - jackStocks[0].totalPaid()).toFixed(2);
+    jTotalGain = (stockPrice - jackStocks[0].totalPaid()).toFixed(2);
+    if(parseFloat(jStockOneGainLoss.innerText) < 0) {
+        jStockOneGainLoss.classList.add('red');
+    } else {
+        jStockOneGainLoss.classList.add('green');
+    }
+});
+
+requestStockPrice(jackStocks[1].symbol).then(x => {
+    stockPrice = ((parseFloat(x).toFixed(2)) * jackStocks[1].shares).toFixed(2);
+    jStockTwoMarketPrice.innerText = stockPrice;
+    jStockTwoGainLoss.innerText = (stockPrice - jackStocks[1].totalPaid()).toFixed(2);
+    jTotalGain = parseFloat(jTotalGain) + parseFloat((stockPrice - jackStocks[1].totalPaid()).toFixed(2));
+    if(parseFloat(jStockTwoGainLoss.innerText) < 0) {
+        jStockTwoGainLoss.classList.add('red');
+    } else {
+        jStockTwoGainLoss.classList.add('green');
+    }
+});
