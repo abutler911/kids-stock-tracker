@@ -99,13 +99,13 @@ let jStockArray = [
 
 
 for(let i=0; i < hStockArray.length; i++) {
-    hSharesOwned[i].innerText = `Shares Owned: ${hStockArray[i].shares}`;
-    hAvgPrice[i].innerText = `Average Price Paid: $${hStockArray[i].avgPrice}`;
+    hSharesOwned[i].innerText = `${hStockArray[i].shares}`;
+    hAvgPrice[i].innerText = `$${hStockArray[i].avgPrice}`;
 }
 
 for(let i=0; i < jStockArray.length; i++) {
-    jSharesOwned[i].innerText = `Shares Owned: ${jStockArray[i].shares}`;
-    jAvgPrice[i].innerText = `Average Price Paid: $${jStockArray[i].avgPrice}`;
+    jSharesOwned[i].innerText = `${jStockArray[i].shares}`;
+    jAvgPrice[i].innerText = `${jStockArray[i].avgPrice}`;
 }
 
 async function hUpdateArray() {
@@ -124,7 +124,7 @@ async function hUpdateArray() {
             }
             hGainLoss[i].innerText = `$${gainLoss}`;
             hStockNames[i].innerText = hStockArray[i].name;
-            hTotalInvestment[i].innerText = `Total Investment: $${total.toFixed(2)}`;
+            hTotalInvestment[i].innerText = `$${total.toFixed(2)}`;
         }
         
     } catch (error) {
@@ -148,7 +148,7 @@ async function jUpdateArray() {
             }
             jGainLoss[i].innerText = `$${gainLoss}`;
             jStockNames[i].innerText = jStockArray[i].name;
-            jTotalInvestment[i].innerText = `Total Investment: $${total.toFixed(2)}`;
+            jTotalInvestment[i].innerText = `$${total.toFixed(2)}`;
         }
         
     } catch (error) {

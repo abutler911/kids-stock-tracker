@@ -132,3 +132,24 @@ p {
 
 
 }
+
+#h-stock-price {
+    font-family: 'Source Code Pro', monospace;
+}
+
+#hContainer {
+    background-color: rgb(233, 233, 233);
+    margin: none;
+}
+
+#jContainer {
+    background-color: rgb(205, 205, 255);
+    margin: none;
+
+}
+
+.copyright {
+    background-color: rgb(205, 205, 255);
+    margin: none;
+    padding-bottom: 10px;
+}

@@ -15,22 +15,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Lora:wght@500&family=Poppins:ital,wght@0,100;0,200;0,400;0,500;0,700;0,800;0,900;1,100&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&family=Source+Code+Pro:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <section class="header">
-      <h1 class="text-center" id="app-title">Da Boys' Stock Tracker</h1>
-      <h2 class="text-center" id="version-line">Version 1.1 | June 25, 2022</h2>
+      <h1 class="text-center" id="app-title">Da Boys' Fat Stacks</h1>
+      <h2 class="text-center" id="version-line">Version 1.2 | June 27, 2022</h2>
       <div class="search-container">
         <input type="text" placeholder="symbol" id="search-input" />
         <button class="btn btn-outline-dark" id="search-btn">Search</button>
       </div>
       <div class="text-center" id="search-result-display"></div>
-      <div class="container" id="hContainer">
-        <hr />
+      <div class="container pt-3" id="hContainer">
         <h2 class="text-center display-3 mb-3">Hudson's Stocks</h2>
         <div class="summary" id="h-summary">
           <h5 class="display-6 text-center">
@@ -64,15 +63,18 @@
             <div class="card">
               <h2 class="text-center h-stock-name"></h2>
               <div class="card-body">
-                <h5 class="card-title text-end h-stock-price"></h5>
-                <hr />
-                <p class="card-text text-start h-shares-owned"></p>
-                <p class="card-text text-start h-avg-price"></p>
-                <p class="card-text text-start h-total-investment"></p>
-                <p class="card-text text-start gain-loss">
+                <h5 class="card-title text-center h-stock-price"></h5>
+                <p class="card-text text-center gain-loss">
                   Gain/Loss:
                   <span class="h-gain-loss"> </span>
                 </p>
+                <hr />
+                <p class="card-text text-center">Shares</p>
+                <p class="text-center h-shares-owned"></p>
+                <p class="card-text text-center">Avg. Price Paid</p>
+                <p class="text-center h-avg-price"></p>
+                <p class="card-text text-center">Total Investment</p>
+                <p class="text-center h-total-investment"></p>
               </div>
             </div>
           </div>
@@ -80,21 +82,24 @@
             <div class="card">
               <h2 class="text-center h-stock-name"></h2>
               <div class="card-body">
-                <h5 class="card-title text-end h-stock-price"></h5>
-                <hr />
-                <p class="card-text text-start h-shares-owned"></p>
-                <p class="card-text text-start h-avg-price"></p>
-                <p class="card-text text-start h-total-investment"></p>
-                <p class="card-text text-start gain-loss">
+                <h5 class="card-title text-center h-stock-price"></h5>
+                <p class="card-text text-center gain-loss">
                   Gain/Loss:
                   <span class="h-gain-loss"></span>
                 </p>
+                <hr />
+                <p class="card-text text-center">Shares</p>
+                <p class="text-center h-shares-owned"></p>
+                <p class="card-text text-center">Avg. Price Paid</p>
+                <p class="text-center h-avg-price"></p>
+                <p class="card-text text-center">Total Investment</p>
+                <p class="text-center h-total-investment"></p>
               </div>
             </div>
           </div>
         </div>
-        <hr />
-
+      </div>
+      <div class="container pt-3" id="jContainer">
         <h2 class="text-center display-3 mb-3">Jack's Stocks</h2>
         <div class="summary" id="j-summary">
           <h5 class="display-6 text-center">
@@ -107,12 +112,14 @@
                 ></span
               ></b>
             </p>
+            <hr />
           </h5>
           <h5 class="display-6 text-center">
             Total Invested:
             <p class="text-center">
               <b><span class="summary-numbers" id="j-total-invested"></span></b>
             </p>
+            <hr />
           </h5>
           <h5 class="display-6 text-center">
             Total Gain/Loss:
@@ -128,15 +135,20 @@
             <div class="card">
               <h2 class="text-center j-stock-name"></h2>
               <div class="card-body">
-                <h5 class="card-title text-start j-stock-price"></h5>
-                <hr />
-                <p class="card-text text-start j-shares-owned"></p>
-                <p class="card-text text-start j-avg-price"></p>
-                <p class="card-text text-start j-total-investment"></p>
-                <p class="card-text text-start gain-loss">
+                <h5 class="card-title text-center j-stock-price"></h5>
+                <p class="card-text text-center gain-loss">
                   Gain/Loss:
                   <span class="j-gain-loss"> </span>
                 </p>
+                <hr />
+                <div class="col-md-6">
+                  <p class="card-text text-center">Shares</p>
+                  <p class="text-center j-shares-owned"></p>
+                  <p class="card-text text-center">Avg. Price Paid</p>
+                  <p class="text-center j-avg-price"></p>
+                  <p class="card-text text-center">Total Investment</p>
+                  <p class="text-center j-total-investment"></p>
+                </div>
               </div>
             </div>
           </div>
@@ -144,22 +156,25 @@
             <div class="card">
               <h2 class="text-center j-stock-name"></h2>
               <div class="card-body">
-                <h5 class="card-title text-end j-stock-price"></h5>
-                <hr />
-                <p class="card-text text-start j-shares-owned"></p>
-                <p class="card-text text-start j-avg-price"></p>
-                <p class="card-text text-start j-total-investment"></p>
-                <p class="card-text text-start gain-loss">
+                <h5 class="card-title text-center j-stock-price"></h5>
+                <p class="card-text text-center gain-loss">
                   Gain/Loss:
                   <span class="j-gain-loss"></span>
                 </p>
+                <hr />
+                <p class="card-text text-center">Shares</p>
+                <p class="text-center j-shares-owned"></p>
+                <p class="card-text text-center">Avg. Price Paid</p>
+                <p class="text-center j-avg-price"></p>
+                <p class="card-text text-center">Total Investment</p>
+                <p class="text-center j-total-investment"></p>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <div class="container">
+    <div class="container pt-3 copyright">
       <h6 class="text-center" id="copyright">
         Copyright 2022 | Andrew F. Butler
       </h6>
