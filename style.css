@@ -1,0 +1,71 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+#app-title {
+    font-size: 2.8em;
+}
+
+#version-line {
+    font-size: 0.8em;
+}
+
+.summary {
+    border: 1px solid grey;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: rgba(121, 156, 209, 0.4);
+    margin-bottom: 15px;
+}
+
+.summary-numbers {
+    font-size: 1.7em;
+}
+
+.col-sm {
+    border: 1px solid grey;
+
+
+}
+
+.card {
+    border: 1px solid grey;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-top: 10px;
+}
+
+.card h2 {
+    background-color: rgba(121, 156, 209, 0.4);
+    border-bottom: 1px solid grey;
+    font-size: 2.1em;
+}
+
+.card-title {
+    font-size: 1.5em;
+    font-family: 'Lora', sans-serif'
+
+}
+
+.card-body {
+    font-size: 1.1em;
+}
+
+.display-6 {
+    font-size: 1.3em;
+}
+
+.gain-loss {
+    font-size: 1.1em;
+}
+
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}
