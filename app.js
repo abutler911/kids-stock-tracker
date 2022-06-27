@@ -209,7 +209,7 @@ async function searchStock(symbol) {
         const price = await requestPrice(symbol);
         const searchResultDisplay = document.querySelector('#search-result-display');
         const para = document.createElement('p');
-        para.innerText = `Quote for ${symbol} is $${price}`;
+        para.innerText = `Quote for ${symbol} is $${price.toFixed(2)}`;
         searchResultDisplay.prepend(para);
     } catch (error) {
         console.error(error);
