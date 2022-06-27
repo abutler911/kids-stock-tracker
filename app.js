@@ -1,4 +1,6 @@
 // let newStockPrice;
+const searchBtn = document.querySelector('#search-btn');
+const searchInput = document.querySelector('#search-input');
 
 const stockQuoteContainer = document.getElementById('stockquote-container');
 
@@ -201,6 +203,37 @@ async function jUpdateTotals() {
         console.error(error);
     }
 }
+
+async function searchStock(symbol) {
+    try {
+        const price = await requestPrice(symbol);
+        const searchResultDisplay = document.querySelector('#search-result-display');
+        const para = document.createElement('p');
+        para.innerText = `Quote for ${symbol} is $${price}`;
+        searchResultDisplay.prepend(para);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+
+searchBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    let searchString = searchInput.value.toUpperCase();
+    if(searchString.length > 4 || searchString.length < 1) {
+        alert('Invalid Symbol - Must be between 1 and 4 characters.');
+    } else {
+        searchStock(searchString);
+        searchInput.value = "";
+        
+    }
+    
+})
+
+
+
+
 
 hUpdateTotals();
 hUpdateArray();

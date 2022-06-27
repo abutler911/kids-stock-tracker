@@ -24,10 +24,15 @@
     <section class="header">
       <h1 class="text-center" id="app-title">Da Boys' Stock Tracker</h1>
       <h2 class="text-center" id="version-line">Version 1.1 | June 25, 2022</h2>
+      <div class="search-container">
+        <input type="text" placeholder="symbol" id="search-input" />
+        <button class="btn btn-outline-dark" id="search-btn">Search</button>
+      </div>
+      <div class="text-center" id="search-result-display"></div>
       <div class="container" id="hContainer">
         <hr />
         <h2 class="text-center display-3 mb-3">Hudson's Stocks</h2>
-        <div class="summary">
+        <div class="summary" id="h-summary">
           <h5 class="display-6 text-center">
             Total Portfolio Value:
             <p class="text-center">
@@ -91,7 +96,7 @@
         <hr />
 
         <h2 class="text-center display-3 mb-3">Jack's Stocks</h2>
-        <div class="summary">
+        <div class="summary" id="j-summary">
           <h5 class="display-6 text-center">
             Total Portfolio Value:
             <p class="text-center">
@@ -123,7 +128,7 @@
             <div class="card">
               <h2 class="text-center j-stock-name"></h2>
               <div class="card-body">
-                <h5 class="card-title text-end j-stock-price"></h5>
+                <h5 class="card-title text-start j-stock-price"></h5>
                 <hr />
                 <p class="card-text text-start j-shares-owned"></p>
                 <p class="card-text text-start j-avg-price"></p>
@@ -154,6 +159,11 @@
         </div>
       </div>
     </section>
+    <div class="container">
+      <h6 class="text-center" id="copyright">
+        Copyright 2022 | Andrew F. Butler
+      </h6>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- JavaScript Bundle with Popper -->
     <script

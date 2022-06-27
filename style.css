@@ -18,8 +18,27 @@ body {
     padding: 5px;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    background-color: rgba(121, 156, 209, 0.4);
+
     margin-bottom: 15px;
+}
+
+#h-summary {
+    background-color: rgba(121, 156, 209, 0.4);
+}
+
+#j-summary {
+    background-color: rgba(155, 228, 141, 0.4);
+
+}
+
+.h-stock-name {
+    background-color: rgba(121, 156, 209, 0.4);
+
+}
+
+.j-stock-name {
+    background-color: rgba(155, 228, 141, 0.4);
+
 }
 
 .summary-numbers {
@@ -39,10 +58,11 @@ body {
 }
 
 .card h2 {
-    background-color: rgba(121, 156, 209, 0.4);
+
     border-bottom: 1px solid grey;
     font-size: 2.1em;
 }
+
 
 .card-title {
     font-size: 1.5em;
@@ -68,4 +88,43 @@ body {
 
 .red {
     color: red;
+}
+
+p {
+    margin: 2px;
+}
+
+#copyright {
+    font-size: .8em;
+    letter-spacing: 0.1em;
+}
+
+.search-container {
+    padding: 10px;
+    background-color: rgb(201, 201, 201);
+}
+
+.search-container input {
+    margin: 10px;
+    border-radius: 5px;
+    border: none;
+    height: 2em;
+    background-color: rgb(253, 253, 253);
+}
+
+btn:hover {
+    background-color: red;
+}
+
+#search-result-display p {
+    font-size: 1.5em;
+    border: 1px solid grey;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 5px;
+    background-color: rgba(213, 255, 226, 0.5);
+
+
+
 }
